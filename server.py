@@ -9,7 +9,7 @@ class Game:
     def __init__(self):
         self.d = diler.Diler(self)
         self.logins = {}
-        self.money = 10000
+        self.money = 10000  ###не связанные деньги у игрока, дилера и сервера, нужно исправить
         self.clients = [] #[(conn, addr)]
         self.server = network.Server()
         try:
