@@ -41,7 +41,7 @@ class Diler:
             self.cards = []
             self.status = Diler.Client.NotReady()
             self.bet = 0
-            self.money = 1000
+            self.money = 1000  ###деньги здесь, их не должно быть
             self.pass = False
 
         def __eq__(self, other):
@@ -61,7 +61,7 @@ class Diler:
         self.comparator = Comparator()
         self.rise_client = None
         self.bet = 0
-        self.bank = 0
+        self.bank = 0   ###деньги здесь, они нужны
         self.big_blind = 100
 
     def getClient(self, client):
@@ -97,10 +97,10 @@ class Diler:
                     self.server.send(self.clients[k].conn, 'ask0')
                 ans = self.server.recv(self.clients[k].conn)
                 self.broadcast('info: игрок ' + str(self.clients[k].id) + ' ответил ' + ans)
-                if ans == 'check':
-                    self.clients[k].status = Diler.Client.Check()
-                elif ans == 'pass':
+                if (ans == 'pass'):
                     self.clients[k].status = Diler.Client.Pass()
+                elif ans == 'check':
+                    self.clients[k].status = Diler.Client.Check()
                 elif ans == 'call':
                     self.clients[k].status = Diler.Client.Called()
                 elif ans[:4] == 'rise' or ans[:3] == 'bet':
